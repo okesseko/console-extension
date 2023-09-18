@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "DevTools Code Injector",
+  "version": "1.0",
+  "description": "Inject code into DevTools Console",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/vite.svg",
+      "48": "images/vite.svg",
+      "128": "images/vite.svg"
+    }
+  },
+  "icons": {
+    "16": "images/vite.svg",
+    "48": "images/vite.svg",
+    "128": "images/vite.svg"
+  },
+  "devtools_page": "devtools.html"
+}
