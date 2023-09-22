@@ -3,5 +3,31 @@
   "version": "1.0",
   "description": "Inject code into DevTools Console",
   "manifest_version": 3,
-  "devtools_page": "devtools.html"
+  "devtools_page": "devtools.html",
+  "permissions": ["activeTab", "tabs", "scripting", "notifications"],
+  "action": {
+    "default_title": "測試",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com.tw/*",
+        "https://aics-xhis.southeastasia.cloudapp.azure.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "event.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": [
+        "https://www.google.com.tw/*",
+        "https://aics-xhis.southeastasia.cloudapp.azure.com/*"
+      ]
+    }
+  ]
 }
