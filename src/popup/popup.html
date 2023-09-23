@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prism.css" type="text/css" />
+    <link rel="stylesheet" href="popup.css" type="text/css" />
+    <title>DevTools Code Injector</title>
+  </head>
+  <body>
+    <h1 class="title">xhis mock native 小工具</h1>
+    <!-- <ul class="support-list">
+      <p>About native</p>
+      <li>
+        <button id="native-mock-external" class="support-group-button">mock external</button>
+      </li>
+      <li>
+        <button id="native-mock-print" class="support-group-button">mock print</button>
+      </li>
+      <li>
+        <button id="native-mock-icCard" class="support-group-button">mock ic card</button>
+      </li>
+    </ul> -->
+    <ul class="support-list">
+      <p class="support-list-title">Complete Encounter</p>
+      <li class="support-group">
+        <p class="support-group-title">Med EMR</p>
+        <button id="mock-emr" class="support-group-button">Mock Med EMR</button>
+        <button id="mock-emr-cancel" class="support-group-button">
+          Cancel mock Med EMR
+        </button>
+      </li>
+      <li class="support-group">
+        <p class="support-group-title">Ic card</p>
+        <button id="mock-iccard-current" class="support-group-button">
+          Mock current patient ic card
+        </button>
+        <button id="mock-iccard-custom" class="support-group-button">
+          Mock custom ic card
+        </button>
+        <form id="custom-iccard-form">
+          <p>GetRegisterBasic (A02)</p>
+          <label for="GetRegisterBasic-errorCode">status:</label>
+          <select
+            id="GetRegisterBasic-errorCode"
+            name="GetRegisterBasic-errorCode"
+          >
+            <option value="0">success</option>
+            <option value="4000">timeout</option>
+          </select>
+
+          <label for="GetRegisterBasic-personalId">personalId:</label>
+          <input
+            type="text"
+            id="GetRegisterBasic-personalId"
+            name="GetRegisterBasic-personalId"
+            placeholder="A000MAR001"
+          />
+          <p>GetSeqNumber256N1 (A53)</p>
+          <label for="GetSeqNumber256N1-errorCode">status:</label>
+          <select
+            id="GetSeqNumber256N1-errorCode"
+            name="GetSeqNumber256N1-errorCode"
+          >
+            <option value="0">success</option>
+            <option value="4000">timeout</option>
+          </select>
+          <p>GetTreatNumNoIcCard (A54)</p>
+          <label for="GetTreatNumNoIcCard-errorCode">status:</label>
+          <select
+            id="GetTreatNumNoIcCard-errorCode"
+            name="GetTreatNumNoIcCard-errorCode"
+          >
+            <option value="0">success</option>
+            <option value="4000">timeout</option>
+          </select>
+          <div class="action-group">
+            <button type="submit">confirm</button>
+            <button type="reset">reset</button>
+          </div>
+        </form>
+        <button id="mock-iccard-cancel" class="support-group-button">
+          Cancel mock ic card
+        </button>
+      </li>
+    </ul>
+    <script type="module" src="popup.js"></script>
+    <script type="text/javascript" src="prism.js "></script>
+  </body>
+</html>
