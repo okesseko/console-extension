@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../root.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+    <title>DevTools Code Injector</title>
+  </head>
+  <body>
+    <h1 class="title">xhis mock native 小工具</h1>
+    <button id="backBtn">< back</button>
+    <form action="" id="custom-iccard-form">
+      <p>GetRegisterBasic (A02)</p>
+      <label for="GetRegisterBasic-errorCode">status:</label>
+      <select id="GetRegisterBasic-errorCode" name="GetRegisterBasic-errorCode">
+        <option value="0">success</option>
+        <option value="4000">timeout</option>
+      </select>
+      <label for="GetRegisterBasic-personalId">personalId:</label>
+      <input
+        type="text"
+        id="GetRegisterBasic-personalId"
+        name="GetRegisterBasic-personalId"
+        placeholder="A000MAR001"
+      />
+      <p>GetSeqNumber256N1 (A53)</p>
+      <label for="GetSeqNumber256N1-errorCode">status:</label>
+      <select
+        id="GetSeqNumber256N1-errorCode"
+        name="GetSeqNumber256N1-errorCode"
+      >
+        <option value="0">success</option>
+        <option value="4000">timeout</option>
+      </select>
+      <p>GetTreatNumNoIcCard (A54)</p>
+      <label for="GetTreatNumNoIcCard-errorCode">status:</label>
+      <select
+        id="GetTreatNumNoIcCard-errorCode"
+        name="GetTreatNumNoIcCard-errorCode"
+      >
+        <option value="0">success</option>
+        <option value="4000">timeout</option>
+      </select>
+      <div class="action-group">
+        <button id="custom-iccard-form-submit" type="submit">confirm</button>
+        <button type="reset">reset</button>
+      </div>
+    </form>
+    <script type="module" src="custom.js"></script>
+  </body>
+</html>

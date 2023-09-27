@@ -1,0 +1,29 @@
+#custom-iccard-form {
+  padding-top: 8px;
+  margin-bottom: 8px;
+}
+
+#custom-iccard-form p {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+#custom-iccard-form label {
+  font-size: 14px;
+}
+
+#custom-iccard-form select,
+#custom-iccard-form input {
+  width: 100%;
+  margin: 4px 0 8px;
+  font-size: 14px;
+}
+
+#custom-iccard-form .action-group {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+#custom-iccard-form .action-group button {
+  width: 100%;
+}
