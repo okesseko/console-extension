@@ -1,8 +1,10 @@
 chrome.runtime.onMessage.addListener((message) => {
-  console.log("成功街收", message);
-
   window.postMessage(
-    { type: "contentScript", eventType: message.eventType },
+    {
+      type: "contentScript",
+      eventType: message.eventType,
+      customArg: message.customArg,
+    },
     "*"
   );
 });
