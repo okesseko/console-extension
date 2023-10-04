@@ -1,3 +1,15 @@
+const mockCurrentPatient = () => {
+  const encounter = {};
+  Object.keys(XHISDataStore.Encounter).forEach((key) => {
+    encounter[key] = XHISDataStore.Encounter[key]?.data?.value;
+  });
+  const mockCurPatientData = ExtXFeNative.Native.buildCurrentPatientIcMockData({
+    encounter,
+    Practitioner: {},
+  });
+  return mockCurPatientData;
+};
+
 const nativeEvent = async (eventType, customArg) => {
   switch (eventType) {
     case "mock-emr":
@@ -17,14 +29,28 @@ const nativeEvent = async (eventType, customArg) => {
       await window.ExtXFeNative.Native.stopExternalFormMockingMode();
       break;
     case "mock-iccard-current":
-      const mockCurPatientData =
-        ExtXFeNative.Native.buildCurrentPatientIcMockData();
-      await ExtXFeNative.Native.startIcCardMockingMode(mockCurPatientData);
+      await ExtXFeNative.Native.startIcCardMockingMode(mockCurrentPatient());
       break;
     case "mock-iccard-custom":
-      await ExtXFeNative.Native.startIcCardMockingMode(
-        customArg.customPatientData
-      );
+      const mockCurPatientData = mockCurrentPatient();
+      for (const [key, value] of Object.entries(customArg)) {
+        switch (key) {
+          case "GetRegisterBasic-errorCode":
+            mockCurPatientData["A02"].errorCode = Number(value);
+            break;
+          case "GetRegisterBasic-personalId":
+            mockCurPatientData["A02"].data.personalId = value;
+            break;
+          case "GetSeqNumber256N1-errorCode":
+            mockCurPatientData["A53"].errorCode = Number(value);
+            break;
+          case "GetTreatNumNoIcCard-errorCode":
+            mockCurPatientData["A54"].errorCode = Number(value);
+            break;
+        }
+      }
+
+      await ExtXFeNative.Native.startIcCardMockingMode(mockCurPatientData);
       break;
     case "mock-iccard-cancel":
       await window.ExtXFeNative.Native.stopIcCardMockingMode();
@@ -42,7 +68,6 @@ window.addEventListener("message", (event) => {
   }
 
   if (event.data.type && event.data.type === "contentScript") {
-    console.log("content page received", event.data.eventType);
-    nativeEvent(event.data.eventType);
+    nativeEvent(event.data.eventType, event.data.customArg);
   }
 });
