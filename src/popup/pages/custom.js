@@ -1,5 +1,14 @@
-const backToMainPage = () => {
-  history.back();
+const formItemIds = [
+  "GetRegisterBasic-errorCode",
+  "GetRegisterBasic-personalId",
+  "GetSeqNumber256N1-errorCode",
+  "GetTreatNumNoIcCard-errorCode",
+];
+
+const addBackToMainPageEvent = () => {
+  document.getElementById("backBtn").addEventListener("click", () => {
+    history.back();
+  });
 };
 
 const setCustomIcCardForm = () => {
@@ -7,32 +16,33 @@ const setCustomIcCardForm = () => {
   customIcCardForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const GetRegisterBasicErrorCode = document.getElementById(
-      "GetRegisterBasic-errorCode"
-    );
-    const GetRegisterBasicPersonalId = document.getElementById(
-      "GetRegisterBasic-personalId"
-    );
-    const GetSeqNumber256N1ErrorCode = document.getElementById(
-      "GetSeqNumber256N1-errorCode"
-    );
-    const GetTreatNumNoIcCardErrorCode = document.getElementById(
-      "GetTreatNumNoIcCard-errorCode"
-    );
+    const searchParams = formItemIds.reduce((prev, id) => {
+      const itemEle = document.getElementById(id);
+      let params = "";
+      if (itemEle.value) {
+        params = `&${id}=${itemEle.value}`;
+      }
 
-    console.log(
-      GetRegisterBasicErrorCode.value,
-      GetRegisterBasicPersonalId.value,
-      GetSeqNumber256N1ErrorCode.value,
-      GetTreatNumNoIcCardErrorCode.value
-    );
-    backToMainPage();
+      return prev + params;
+    }, "from=custom");
+
+    window.location.href = `../popup.html?${searchParams}`;
+  });
+};
+
+const setItemValueFromUrl = () => {
+  const url = new URLSearchParams(window.location.search);
+  formItemIds.forEach((id) => {
+    const value = url.get(id);
+    if (value) {
+      const itemEle = document.getElementById(id);
+      itemEle.value = value;
+    }
   });
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("backBtn").addEventListener("click", () => {
-    backToMainPage();
-  });
+  addBackToMainPageEvent();
   setCustomIcCardForm();
+  setItemValueFromUrl();
 });
