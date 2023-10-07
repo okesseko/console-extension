@@ -1,0 +1,40 @@
+body {
+  background-color: gray;
+  color: white;
+  font-size: 20px;
+}
+
+/* li {
+  padding: 0;
+  margin: 0;
+} */
+
+#navbar {
+  padding: 0;
+  margin: 0 0 8px 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  background-color: aqua;
+}
+
+#navbar li{
+    padding: 8px;
+    background-color: aquamarine;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: minmax(200px, 20%) auto;
+}
+
+#sidebar {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#content {
+    background-color: bisque;
+}

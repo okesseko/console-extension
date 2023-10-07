@@ -1,32 +1,23 @@
 <!DOCTYPE html>
-<html style="display: flex">
+<html>
   <head>
-    <meta charset="utf8" />
-    <style>
-      html {
-        display: flex;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        flex: 1;
-        display: flex;
-        width: 100%;
-      }
-      #container {
-        display: flex;
-        flex: 1;
-        width: 100%;
-      }
-    </style>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="panel.css" type="text/css" />
   </head>
   <body>
-    <button id="test">123123123</button>
-    <script src="panel.js"></script>
+    <ul id="navbar">
+      <li>123</li>
+      <li>456</li>
+      <li>789</li>
+    </ul>
+    <div id="main">
+      <ul id="sidebar">
+        <li>123</li>
+        <li>456</li>
+        <li>789</li>
+      </ul>
+      <div id="content">qweqweqweqwee</div>
+    </div>
+    <script type="module" src="panel.js"></script>
   </body>
 </html>
